@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>m3u8 下载测试</title>
+<style>
+body { font-family: system-ui, "Segoe UI", "Microsoft YaHei", sans-serif; background: #0b1120; color: #e2e8f0; margin: 0; padding: 32px; }
+video { background: #000; border-radius: 8px; display: block; width: 640px; height: 360px; }
+h1 { font-size: 18px; margin: 0 0 12px; }
+p { color: #94a3b8; font-size: 13px; }
+</style>
+</head>
+<body>
+<h1>m3u8 解析下载测试</h1>
+<video id="v" controls playsinline></video>
+<p id="info"></p>
+<script>
+const q = new URLSearchParams(location.search);
+const u = q.get('src') || '/test.m3u8';
+const v = document.getElementById('v');
+document.getElementById('info').textContent = 'src=' + u + (q.get('blob') === '1' ? ' (blob 模式)' : ' (直链模式)');
+if (q.get('blob') === '1') {
+  // 模拟 MSE 场景:页面发起 m3u8 请求(被扩展嗅探),video 挂 blob: URL
+  fetch(u).then((r) => r.text()).then((t) => {
+    v.src = URL.createObjectURL(new Blob([t], { type: 'application/vnd.apple.mpegurl' }));
+    window.__blobReady = true;
+  });
+} else {
+  v.src = u;
+}
+</script>
+</body>
+</html>

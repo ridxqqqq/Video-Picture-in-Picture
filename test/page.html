@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>PiP 扩展测试页</title>
+<style>
+body { font-family: system-ui, "Segoe UI", "Microsoft YaHei", sans-serif; background: #0b1120; color: #e2e8f0; margin: 0; padding: 32px; display: flex; gap: 24px; flex-wrap: wrap; }
+video { background: #000; border-radius: 8px; display: block; }
+#big { width: 640px; height: 360px; }
+#small { width: 160px; height: 90px; }
+.box { border: 1px solid #1e293b; border-radius: 12px; padding: 16px; }
+h1 { font-size: 18px; margin: 0 0 12px; }
+p { color: #94a3b8; font-size: 13px; max-width: 640px; margin: 8px 0 0; }
+</style>
+</head>
+<body>
+<div>
+  <h1>视频画中画扩展 · 自动化测试页</h1>
+  <p>鼠标悬停在大视频上点击「画中画」按钮；也可用快捷键 Alt+P / 扩展弹窗开启。</p>
+</div>
+<div class="box"><video id="big" muted autoplay playsinline></video><p>大视频 640×360（多视频时应被选中）</p></div>
+<div class="box"><video id="small" muted autoplay playsinline></video><p>小视频 160×90</p></div>
+<canvas id="src" width="640" height="360" hidden></canvas>
+<script>
+const c = document.getElementById('src'), ctx = c.getContext('2d');
+let t = 0;
+(function draw() {
+  t++;
+  ctx.fillStyle = '#0f172a'; ctx.fillRect(0, 0, 640, 360);
+  ctx.strokeStyle = '#1e3a5f';
+  for (let i = 0; i < 640; i += 40) { ctx.beginPath(); ctx.moveTo(i, 0); ctx.lineTo(i, 360); ctx.stroke(); }
+  ctx.fillStyle = '#38bdf8'; ctx.font = 'bold 56px sans-serif';
+  ctx.fillText('PiP TEST ' + Math.floor(t / 10), 130, 200);
+  ctx.fillStyle = '#f59e0b'; ctx.fillRect((t * 6) % (640 + 80) - 80, 280, 80, 40);
+  requestAnimationFrame(draw);
+})();
+const stream = c.captureStream(30);
+for (const id of ['big', 'small']) {
+  const v = document.getElementById(id);
+  v.srcObject = stream;
+  v.play().catch(() => {});
+}
+</script>
+</body>
+</html>

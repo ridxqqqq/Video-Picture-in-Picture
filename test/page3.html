@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>我的测试视频</title>
+<style>
+body { font-family: system-ui, "Segoe UI", "Microsoft YaHei", sans-serif; background: #0b1120; color: #e2e8f0; margin: 0; padding: 32px; }
+video { background: #000; border-radius: 8px; display: block; width: 640px; height: 360px; }
+h1 { font-size: 18px; margin: 0 0 12px; }
+p { color: #94a3b8; font-size: 13px; }
+</style>
+</head>
+<body>
+<h1>blob 视频下载测试</h1>
+<video id="v" controls playsinline></video>
+<p>视频地址为同源 blob: URL,下载按钮应通过 a[download] 保存,文件名取自页面标题。</p>
+<script>
+fetch('/test.mp4').then((r) => r.blob()).then((b) => {
+  document.getElementById('v').src = URL.createObjectURL(b);
+});
+</script>
+</body>
+</html>
