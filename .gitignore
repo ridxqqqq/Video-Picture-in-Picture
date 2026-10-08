@@ -1,0 +1,19 @@
+# —— Chrome / Edge 扩展不需要 node_modules（扩展本体零依赖）——
+node_modules/
+
+# —— 测试产生的大文件与产物 ——
+test/chrome/            # Chrome for Testing 解压目录（~400MB）
+test/chrome-cft.zip     # 其下载包
+test/downloads-test/    # 下载测试产物
+test/shots/             # 截图输出（发布用截图已收入 docs/screenshots/）
+test/*.log
+test/t*-log.txt
+
+# —— 系统文件 ——
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# —— 编辑器 ——
+.vscode/
+.idea/

@@ -11,11 +11,11 @@ cd <本仓库目录>
 
 git init
 git add .
-git commit -m "feat: 视频画中画 Plus v1.2.0 首个公开版本"
+git commit -m "feat: 视频画中画 Plus v1.2.1 首个公开版本"
 
 # 在 GitHub 网页上新建空仓库（不要勾选 README/LICENSE 初始化）后：
 git branch -M main
-git remote add origin https://github.com/<你的用户名>/video-pip-plus.git
+git remote add origin https://github.com/ridxqqqq/Video-Picture-in-Picture.git
 git push -u origin main
 ```
 
@@ -24,12 +24,12 @@ git push -u origin main
 ### 1.2 打 tag 并发 Release（附带发行 zip）
 
 ```powershell
-git tag -a v1.2.0 -m "v1.2.0: 视频解析下载 + 自愈注入"
-git push origin v1.2.0
+git tag -a v1.2.1 -m "v1.2.1: 视频解析下载 + 自愈注入 + 缩放显示修复"
+git push origin v1.2.1
 
 # 用 GitHub CLI（可选，没有 gh 就在网页 Releases → Draft a new release）：
-gh release create v1.2.0 releases/video-pip-plus-v1.2.0.zip `
-  --title "v1.2.0 视频解析下载" `
+gh release create v1.2.1 releases/video-pip-plus-v1.2.1.zip `
+  --title "v1.2.1 视频解析下载 + 缩放修复" `
   --notes "新增：小窗内一键解析下载视频（直链 / m3u8 含 AES-128 / MSE 嗅探）；安装方式见 README。SHA-256 见 README。"
 ```
 

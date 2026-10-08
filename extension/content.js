@@ -206,12 +206,16 @@
     * { box-sizing: border-box; }
     html, body { margin: 0; padding: 0; width: 100%; height: 100%; background: #000; overflow: hidden;
       font-family: system-ui, "Segoe UI", "Microsoft YaHei", sans-serif; }
-    .vp-stage { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: #000; }
-    .vp-stage video { width: 100%; height: 100%; object-fit: contain; background: #000; }
+    .vp-stage { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: #000; overflow: hidden; }
+    /* 全部 !important:网页播放器常在 video 上写内联宽高/transform,普通规则会被内联样式覆盖,
+       导致小窗缩放时视频保持原尺寸被裁切(字幕看不见)。这里强制归一化为等比 contain 完整显示 */
+    .vp-stage video { width: 100% !important; height: 100% !important; object-fit: contain !important; background: #000;
+      position: static !important; inset: auto !important; transform: none !important;
+      max-width: 100% !important; max-height: 100% !important; margin: 0 !important; }
     .vp-controls { position: absolute; left: 0; right: 0; bottom: 0; display: flex; align-items: center; gap: 6px;
       padding: 8px 10px; background: linear-gradient(to top, rgba(2,6,23,.92), rgba(2,6,23,.45));
-      opacity: .45; transition: opacity .18s; }
-    html:hover .vp-controls { opacity: 1; }
+      opacity: 0; transition: opacity .18s; }
+    html:hover .vp-controls, body.vp-paused .vp-controls { opacity: 1; }
     .vp-ctl { flex: none; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center;
       border: 0; border-radius: 8px; background: transparent; color: #e2e8f0; cursor: pointer; padding: 0; }
     .vp-ctl:hover { background: rgba(255,255,255,.14); }
@@ -443,7 +447,10 @@
     updateSize();
 
     // ---- 播放 / 暂停 ----
-    const syncPlay = () => { playBtn.innerHTML = video.paused ? I.play : I.pause; };
+    const syncPlay = () => {
+      playBtn.innerHTML = video.paused ? I.play : I.pause;
+      doc.body.classList.toggle('vp-paused', video.paused); // 暂停时常显控制条;播放且未悬停时自动隐藏,不挡画面底部字幕
+    };
     syncPlay();
     playBtn.addEventListener('click', () => {
       if (video.paused) video.play().catch(() => {}); else video.pause();

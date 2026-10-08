@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "视频画中画 Plus",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "任意网页视频一键画中画：浮动小窗，宽度和高度随意拖拽调整，自动记住你的偏好尺寸。",
   "minimum_chrome_version": "116",
   "icons": {

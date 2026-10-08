@@ -2,12 +2,12 @@
 
 一款 Chrome / Edge 浏览器扩展（Manifest V3）：把任意网页视频放进**宽高可自由拖拽**的画中画浮动小窗，边看边干别的；顺带内置了实用的**视频解析下载**（直链 / m3u8-HLS / MSE 流式页面均支持）。
 
-- 当前版本：**v1.2.0**（manifest_version 3，最低 Chrome / Edge 116）
+- 当前版本：**v1.2.1**（manifest_version 3，最低 Chrome / Edge 116）
 - 纯原生 JS，**零依赖、零构建**：克隆即用，无需 npm install / 打包器
 - 完全本地运行：无网络上报、无埋点、无广告
 
-> 📥 **不想自己加载？** 直接下载 [`releases/video-pip-plus-v1.2.0.zip`](releases/video-pip-plus-v1.2.0.zip)，解压后按下方步骤加载即可。
-> SHA-256：`afa5d0d10ef04437e6a36237f0691ea5776f67484edaaeb876835c71720bab3e`
+> 📥 **不想自己加载？** 直接下载 [`releases/video-pip-plus-v1.2.1.zip`](releases/video-pip-plus-v1.2.1.zip)，解压后按下方步骤加载即可。
+> SHA-256：`9a56294a017f78196cdab020e7d98d585ee305a2c6b63f793f4afe4148bb35f0`
 
 ## 功能特性
 
@@ -74,7 +74,7 @@ video-pip-plus/
 │   ├── TESTING.md             # 测试指南（环境搭建、25 项清单、图标再生成）
 │   └── PUBLISH.md             # 发布指南（git init → GitHub Release 全流程）
 ├── releases/
-│   └── video-pip-plus-v1.2.0.zip   # 打包好的发行 zip
+│   └── video-pip-plus-v1.2.1.zip   # 打包好的发行 zip
 └── CHANGELOG.md               # 版本历史
 ```
 

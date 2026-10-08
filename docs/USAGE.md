@@ -7,7 +7,7 @@
 1. 打开 Chrome，地址栏输入 `chrome://extensions/` 回车
 2. 打开右上角的「开发者模式」开关
 3. 点击左上角「加载已解压的扩展程序」
-4. 选择仓库里的 **`extension/`** 文件夹（里面要有 manifest.json）；或先解压 [`releases/video-pip-plus-v1.2.0.zip`](../releases/video-pip-plus-v1.2.0.zip) 再选择解压出的文件夹
+4. 选择仓库里的 **`extension/`** 文件夹（里面要有 manifest.json）；或先解压 [`releases/video-pip-plus-v1.2.1.zip`](../releases/video-pip-plus-v1.2.1.zip) 再选择解压出的文件夹
 5. 建议：点浏览器右上角拼图图标 🧩，把「视频画中画 Plus」图钉固定到工具栏
 
 > Edge 用户：打开 `edge://extensions/`，同样开启开发者模式后加载，步骤一致。

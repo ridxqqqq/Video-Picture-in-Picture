@@ -2,6 +2,13 @@
 
 本项目的版本号遵循 [语义化版本](https://semver.org/lang/zh-CN/)（主版本.次版本.修订号）。
 
+## [1.2.1] - 2026-10-08
+
+### 修复
+
+- **小窗缩放时画面显示不全**（尤其手动缩放时最严重、底部字幕被裁）：网页播放器常在 video 元素上写内联样式（固定像素宽高、transform 缩放等），其优先级高于普通 CSS，导致视频元素在小窗内保持原尺寸被裁切。现在画中画文档内对视频强制归一化（`width/height 100% + object-fit: contain + transform: none` 全部 `!important`，并清除内联定位），任意窗口尺寸、任意宽高比下画面均完整显示（letterbox 黑边补齐），字幕完整可见
+- 控制条改为**播放时自动隐藏、悬停或暂停时常显**：不再常驻遮挡画面底部字幕
+
 ## [1.2.0] - 2026-09-07
 
 ### 新增
@@ -60,6 +67,7 @@
 - 图标生成器：纯 Node 手写 PNG 编码器（CRC32 / zlib / IHDR / IDAT），零第三方依赖
 - 自动化验收测试 25 项（puppeteer-core + Chrome for Testing）
 
-[1.2.0]: https://github.com/<你的用户名>/video-pip-plus/releases/tag/v1.2.0
-[1.1.0]: https://github.com/<你的用户名>/video-pip-plus/releases/tag/v1.1.0
-[1.0.0]: https://github.com/<你的用户名>/video-pip-plus/releases/tag/v1.0.0
+[1.2.1]: https://github.com/ridxqqqq/Video-Picture-in-Picture/releases/tag/v1.2.1
+[1.2.0]: https://github.com/ridxqqqq/Video-Picture-in-Picture/releases/tag/v1.2.0
+[1.1.0]: https://github.com/ridxqqqq/Video-Picture-in-Picture/releases/tag/v1.1.0
+[1.0.0]: https://github.com/ridxqqqq/Video-Picture-in-Picture/releases/tag/v1.0.0
